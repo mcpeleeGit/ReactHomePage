@@ -9,61 +9,47 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 
 
-class Toggl extends React.Component {
+class ContactLink extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isToggleOn: true };
-
-        // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }));
+        this.setState(state => ({ isToggleOn: !state.isToggleOn }));
         ReactDOM.render(<Contact />, document.getElementById('root'));
     }
 
     render() {
         return (
-            <button onClick={this.handleClick}>
-                {this.state.isToggleOn ? 'ON' : 'OFF'}
-            </button>
+            <a href="#contact" class={this.state.isToggleOn ? 'active' : 'OFF'} onClick={this.handleClick}>Contact</a>
         );
     }
 }
 
-class Toggle extends React.Component {
+class AboutLink extends React.Component {
     constructor(props) {
         super(props);
         this.state = { isToggleOn: true };
-
-        // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }));
+        this.setState(state => ({ isToggleOn: !state.isToggleOn }));
         ReactDOM.render(<About />, document.getElementById('root'));
     }
 
     render() {
         return (
-            <button onClick={this.handleClick}>
-                {this.state.isToggleOn ? 'ON' : 'OFF'}
-            </button>
+            <a href="#about"  class={this.state.isToggleOn ? 'active' : 'OFF'} onClick={this.handleClick}>About</a>
         );
     }
 }
 
 
-
-
-ReactDOM.render(<Toggle />, document.getElementById('about'));
-ReactDOM.render(<Toggl />, document.getElementById('contact'));
+ReactDOM.render(<AboutLink />, document.getElementById('about'));
+ReactDOM.render(<ContactLink />, document.getElementById('contact'));
 
 
 // If you want your app to work offline and load faster, you can change
